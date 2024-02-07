@@ -1,16 +1,18 @@
 import { StyleSheet } from "react-native";
 import { styles } from "./styles";
-import { Text, View } from "@/components/Themed";
+import { ThemedText, ThemedView, ThemedButton } from "@/components/Themed";
 
 export default function TabTwoScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Routines</Text>
-      <View
+    <ThemedView style={styles.container}>
+      <ThemedButton>
+        <ThemedText>Create New Routine</ThemedText>
+      </ThemedButton>
+      <ThemedView
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-    </View>
+    </ThemedView>
   );
 }
