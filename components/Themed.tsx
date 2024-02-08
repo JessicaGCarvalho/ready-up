@@ -53,7 +53,7 @@ export function ThemedButton(props: ButtonProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor(
     { light: lightColor, dark: darkColor },
-    "button"
+    "secondaryBackground"
   );
 
   return (

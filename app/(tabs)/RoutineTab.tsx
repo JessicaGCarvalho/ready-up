@@ -8,11 +8,7 @@ export default function TabTwoScreen() {
       <ThemedButton>
         <ThemedText>Create New Routine</ThemedText>
       </ThemedButton>
-      <ThemedView
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
+      <ThemedView style={styles.separator} />
     </ThemedView>
   );
 }
