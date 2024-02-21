@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: "500",
+    fontWeight: "600",
   },
   text: {
     fontSize: 16,
@@ -19,8 +19,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-    padding: 16,
-    borderRadius: 6,
   },
   plusButton: {
     borderRadius: 40,

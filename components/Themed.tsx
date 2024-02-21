@@ -57,6 +57,27 @@ export function ThemedButton(props: ButtonProps) {
   );
 
   return (
-    <TouchableOpacity style={[{ backgroundColor }, style]} {...otherProps} />
+    <TouchableOpacity
+      style={[{ backgroundColor, padding: 16, borderRadius: 6 }, style]}
+      {...otherProps}
+    />
+  );
+}
+
+export function ThemedAccentButton(props: ButtonProps) {
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    "accent"
+  );
+
+  return (
+    <TouchableOpacity
+      style={[
+        { backgroundColor, padding: 16, borderRadius: 6, alignItems: "center" },
+        style,
+      ]}
+      {...otherProps}
+    />
   );
 }
