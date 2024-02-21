@@ -74,7 +74,12 @@ export function ThemedAccentButton(props: ButtonProps) {
   return (
     <TouchableOpacity
       style={[
-        { backgroundColor, padding: 16, borderRadius: 6, alignItems: "center" },
+        {
+          backgroundColor,
+          padding: 8,
+          borderRadius: 6,
+          alignItems: "center",
+        },
         style,
       ]}
       {...otherProps}

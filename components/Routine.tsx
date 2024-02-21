@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 
-export function RoutineItem(props: View["props"]) {
+export function Routine(props: View["props"]) {
   const colorScheme = useColorScheme();
   return (
     <View
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    gap: 16,
+    gap: 8,
     padding: 16,
     borderRadius: 4,
   },
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   text: {
     fontSize: 16,

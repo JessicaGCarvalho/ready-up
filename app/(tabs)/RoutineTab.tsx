@@ -1,4 +1,4 @@
-import { RoutineItem } from "@/components/RoutineItem";
+import { Routine } from "@/components/Routine";
 import { styles } from "./styles";
 import { ThemedText, ThemedView, ThemedButton } from "@/components/Themed";
 import Colors from "@/constants/Colors";
@@ -19,7 +19,7 @@ export default function TabTwoScreen() {
         <ThemedText style={styles.text}>Create New Routine</ThemedText>
       </ThemedButton>
       <ThemedText style={styles.title}>Routines</ThemedText>
-      <RoutineItem />
+      <Routine />
     </ThemedView>
   );
 }
