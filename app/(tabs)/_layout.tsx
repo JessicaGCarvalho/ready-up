@@ -1,13 +1,9 @@
 import React from "react";
-import { AntDesign } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -19,6 +15,7 @@ export default function TabLayout() {
         headerStyle: {
           backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,
           borderBottomWidth: 0,
+          shadowOpacity: 0,
         },
         tabBarStyle: {
           backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,

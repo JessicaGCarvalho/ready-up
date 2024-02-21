@@ -3,16 +3,31 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    display: "flex",
+    gap: 16,
+    padding: 16,
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 18,
+    fontWeight: "500",
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+  text: {
+    fontSize: 16,
+  },
+  createRoutineButton: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    padding: 16,
+    borderRadius: 6,
+  },
+  plusButton: {
+    borderRadius: 40,
+    alignItems: "center",
+    position: "absolute",
+    padding: 16,
+    right: 20,
+    bottom: 20,
   },
 });
