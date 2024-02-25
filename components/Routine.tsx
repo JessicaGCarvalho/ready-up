@@ -3,8 +3,14 @@ import { ThemedAccentButton, ThemedText } from "./Themed";
 import { AntDesign } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { StyleSheet } from "react-native";
+import type { Routine, RoutineItem } from "@/constants/types";
 
-export function Routine(props: View["props"]) {
+export type RoutineProps = {
+  routineItems: RoutineItem[];
+  routine: Routine;
+};
+
+export function Routine(props: RoutineProps) {
   const colorScheme = useColorScheme();
   return (
     <View
@@ -16,7 +22,7 @@ export function Routine(props: View["props"]) {
       ]}
     >
       <View style={styles.titleContainer}>
-        <ThemedText style={styles.title}>Routine Name</ThemedText>
+        <ThemedText style={styles.title}>{props.routine.name}</ThemedText>
         <TouchableOpacity>
           <AntDesign
             name="ellipsis1"
@@ -36,8 +42,14 @@ export function Routine(props: View["props"]) {
           styles.text,
         ]}
       >
-        Wake Up, Meditate, Water Plants, Brush Teeth, Wash Face, Eat Breakfast,
-        Tidy, Get Dressed, Leave
+        {props.routine.items
+          .map((itemId) => {
+            const routineItem = props.routineItems.find(
+              (routineItem) => routineItem.id === itemId
+            );
+            return routineItem?.name;
+          })
+          .join(", ")}
       </ThemedText>
       <ThemedAccentButton>
         <ThemedText style={styles.text}>Add to Schedule</ThemedText>
