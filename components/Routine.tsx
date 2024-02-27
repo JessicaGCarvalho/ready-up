@@ -3,10 +3,10 @@ import { ThemedAccentButton, ThemedText } from "./Themed";
 import { AntDesign } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { StyleSheet } from "react-native";
-import type { Routine, RoutineItem } from "@/constants/types";
+import type { Routine, Task } from "@/constants/types";
 
 export type RoutineProps = {
-  routineItems: RoutineItem[];
+  Tasks: Task[];
   routine: Routine;
 };
 
@@ -44,10 +44,8 @@ export function Routine(props: RoutineProps) {
       >
         {props.routine.items
           .map((itemId) => {
-            const routineItem = props.routineItems.find(
-              (routineItem) => routineItem.id === itemId
-            );
-            return routineItem?.name;
+            const Task = props.Tasks.find((Task) => Task.id === itemId);
+            return Task?.name;
           })
           .join(", ")}
       </ThemedText>

@@ -4,7 +4,7 @@ import { ThemedText, ThemedView, ThemedButton } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useColorScheme } from "react-native";
-import { routineList, routineItemList } from "./fakeRoutineData";
+// import { routineList, taskList } from "./mockRoutineData";
 export default function TabTwoScreen() {
   const colorScheme = useColorScheme();
 
@@ -19,9 +19,9 @@ export default function TabTwoScreen() {
         <ThemedText style={styles.text}>Create New Routine</ThemedText>
       </ThemedButton>
       <ThemedText style={styles.title}>Routines</ThemedText>
-      {routineList.map((routine) => {
-        return <Routine routine={routine} routineItems={routineItemList} />;
-      })}
+      {/* {routineList.map((routine) => {
+        return <Routine routine={routine} routineItems={taskList} />;
+      })} */}
     </ThemedView>
   );
 }

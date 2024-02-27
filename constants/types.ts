@@ -1,11 +1,18 @@
-export type RoutineItem = {
-  id: string;
+export type Task = {
+  id: number;
   name: string;
-  duration: number; //amount of time before leaving or amount of time that item takes
+  duration: number;
+  discarded: boolean;
 };
 
 export type Routine = {
-  id: string;
+  id: number;
   name: string;
-  items: string[];
+  discarded: boolean;
+};
+
+export type RoutineTask = {
+  id: number;
+  routineId: number;
+  taskId: number;
 };
