@@ -4,14 +4,20 @@ import { AntDesign } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 import type { Routine, Task } from "@/constants/types";
+import { useEffect, useState } from "react";
+import { getTasksForRoutine } from "@/database/routines";
 
 export type RoutineProps = {
-  Tasks: Task[];
   routine: Routine;
 };
 
 export function Routine(props: RoutineProps) {
   const colorScheme = useColorScheme();
+  const [tasks, setTasks] = useState<Task[]>([]);
+  useEffect(() => {
+    getTasksForRoutine(props.routine.id).then(setTasks);
+  }, []);
+
   return (
     <View
       style={[
@@ -42,12 +48,7 @@ export function Routine(props: RoutineProps) {
           styles.text,
         ]}
       >
-        {props.routine.items
-          .map((itemId) => {
-            const Task = props.Tasks.find((Task) => Task.id === itemId);
-            return Task?.name;
-          })
-          .join(", ")}
+        {tasks.map((task) => task.name).join(", ")}
       </ThemedText>
       <ThemedAccentButton>
         <ThemedText style={styles.text}>Add to Schedule</ThemedText>

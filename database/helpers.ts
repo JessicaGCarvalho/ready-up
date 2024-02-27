@@ -13,7 +13,12 @@ export const setupDb = () => {
   simpleQuery(SETUP_ROUTINE_TASKS_SQL);
 };
 
-export const simpleQuery = (query: string, args: string[] = []) => {
+type ValidArgs = string | number;
+
+export const simpleQuery = (
+  query: string,
+  args: SQLite.SQLStatementArg[] = []
+) => {
   return new Promise<SQLite.SQLResultSet>((resolve, reject) => {
     db.transaction(
       (tx) => tx.executeSql(query, args, (_, results) => resolve(results)),

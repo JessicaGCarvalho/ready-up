@@ -17,6 +17,7 @@ export const SETUP_ROUTINE_TASKS_SQL = `
   CREATE TABLE IF NOT EXISTS routine_tasks (
     id SERIAL PRIMARY KEY,
     routineId INTEGER REFERENCES Routine(id),
-    taskId INTEGER REFERENCES Task(id)
+    taskId INTEGER REFERENCES Task(id),
+    position INTEGER
   );
 `;
