@@ -3,9 +3,14 @@ import { styles } from "./styles";
 import { ThemedText, ThemedView, ThemedButton } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
-import { useColorScheme } from "react-native";
+import { ScrollView, useColorScheme } from "react-native";
 import { useEffect, useState } from "react";
-import { getRoutines, getTasksForRoutine } from "@/database/routines";
+import {
+  createRoutine,
+  deleteRoutine,
+  getRoutines,
+  getTasksForRoutine,
+} from "@/database/routines";
 import { Routine as RoutineType } from "@/constants/types";
 import { simpleQuery } from "@/database/helpers";
 
@@ -13,9 +18,10 @@ export default function TabTwoScreen() {
   const colorScheme = useColorScheme();
 
   const [routines, setRoutines] = useState<RoutineType[]>([]);
+  const [showRoutineModal, setShowRoutineModal] = useState(false);
 
   useEffect(() => {
-    getRoutines().then(setRoutines);
+    createRoutine("morning").then(() => getRoutines().then(setRoutines));
   }, []);
 
   return (
@@ -29,9 +35,11 @@ export default function TabTwoScreen() {
         <ThemedText style={styles.text}>Create New Routine</ThemedText>
       </ThemedButton>
       <ThemedText style={styles.title}>Routines</ThemedText>
-      {routines.map((routine) => {
-        return <Routine routine={routine} />;
-      })}
+      <ScrollView contentContainerStyle={styles.routinesContainer}>
+        {routines.map((routine) => {
+          return <Routine routine={routine} />;
+        })}
+      </ScrollView>
     </ThemedView>
   );
 }

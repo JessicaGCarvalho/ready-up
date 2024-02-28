@@ -2,7 +2,7 @@ import { Routine, Task } from "@/constants/types";
 import { simpleQuery } from "./helpers";
 
 export const getRoutines = async (): Promise<Routine[]> => {
-  const result = await simpleQuery(`select * from routines;`);
+  const result = await simpleQuery(`SELECT * from routines;`);
   return result["rows"]["_array"];
 };
 
@@ -12,10 +12,10 @@ export const getTasksForRoutine = async (
   const result = await simpleQuery(
     `
       select tasks.*
-      from routine_tasks 
+      from routineTasks 
       inner join tasks 
-      on routine_tasks.taskId = tasks.id 
-      where routine_tasks.routineId=?
+      on routineTasks.taskId = tasks.id 
+      where routineTasks.routineId=?
       order by position
     `,
     [routineId]
@@ -23,4 +23,20 @@ export const getTasksForRoutine = async (
   return result["rows"]["_array"];
 };
 
-export const createRoutine = () => {};
+export const createRoutine = (routineName: string) => {
+  return simpleQuery(
+    `
+    insert into routines (name, discarded) values (?,0)
+  `,
+    [routineName]
+  );
+};
+
+export const deleteRoutine = (routineId: number) => {
+  return simpleQuery(
+    `
+    delete from routines where id = ?
+  `,
+    [routineId]
+  );
+};

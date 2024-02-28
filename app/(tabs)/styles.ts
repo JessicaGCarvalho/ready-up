@@ -28,4 +28,8 @@ export const styles = StyleSheet.create({
     right: 20,
     bottom: 20,
   },
+  routinesContainer: {
+    display: "flex",
+    gap: 16,
+  },
 });

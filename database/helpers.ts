@@ -13,8 +13,6 @@ export const setupDb = () => {
   simpleQuery(SETUP_ROUTINE_TASKS_SQL);
 };
 
-type ValidArgs = string | number;
-
 export const simpleQuery = (
   query: string,
   args: SQLite.SQLStatementArg[] = []
@@ -25,4 +23,10 @@ export const simpleQuery = (
       reject
     );
   });
+};
+
+export const dropEverything = () => {
+  simpleQuery("DROP TABLE routine_tasks");
+  simpleQuery("DROP TABLE routines");
+  simpleQuery("DROP TABLE tasks");
 };

@@ -2,13 +2,13 @@ export type Task = {
   id: number;
   name: string;
   duration: number;
-  discarded: boolean;
+  discarded: 0 | 1;
 };
 
 export type Routine = {
   id: number;
   name: string;
-  discarded: boolean;
+  discarded: 0 | 1;
 };
 
 export type RoutineTask = {
