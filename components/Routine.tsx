@@ -7,11 +7,10 @@ import type { Routine, Task } from "@/constants/types";
 import { useEffect, useState } from "react";
 import { getTasksForRoutine } from "@/database/routines";
 
-type RoutineProps = {
+export function Routine(props: {
   routine: Routine;
-};
-
-export function Routine(props: RoutineProps) {
+  handleOptionsClicked: () => void;
+}) {
   const colorScheme = useColorScheme();
   const [tasks, setTasks] = useState<Task[]>([]);
 
@@ -30,7 +29,11 @@ export function Routine(props: RoutineProps) {
     >
       <View style={styles.titleContainer}>
         <ThemedText style={styles.title}>{props.routine.name}</ThemedText>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            props.handleOptionsClicked();
+          }}
+        >
           <AntDesign
             name="ellipsis1"
             size={26}

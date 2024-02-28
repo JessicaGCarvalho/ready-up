@@ -13,15 +13,17 @@ import {
 } from "@/database/routines";
 import { Routine as RoutineType } from "@/constants/types";
 import { simpleQuery } from "@/database/helpers";
+import { RoutineModal } from "@/components/RoutineModal";
 
 export default function TabTwoScreen() {
   const colorScheme = useColorScheme();
 
   const [routines, setRoutines] = useState<RoutineType[]>([]);
-  const [showRoutineModal, setShowRoutineModal] = useState(false);
+  const [isRoutineModalVisible, setIsRoutineModalVisible] = useState(false);
+  const [selectedRoutineOption, setSelectedRoutineOption] = useState<number>();
 
   useEffect(() => {
-    createRoutine("morning").then(() => getRoutines().then(setRoutines));
+    getRoutines().then(setRoutines);
   }, []);
 
   return (
@@ -37,9 +39,26 @@ export default function TabTwoScreen() {
       <ThemedText style={styles.title}>Routines</ThemedText>
       <ScrollView contentContainerStyle={styles.routinesContainer}>
         {routines.map((routine) => {
-          return <Routine routine={routine} />;
+          return (
+            <Routine
+              routine={routine}
+              handleOptionsClicked={() => {
+                setIsRoutineModalVisible(true);
+                setSelectedRoutineOption(routine.id);
+              }}
+            />
+          );
         })}
       </ScrollView>
+      <RoutineModal
+        isVisible={isRoutineModalVisible}
+        setIsRoutineModalVisible={setIsRoutineModalVisible}
+        handleDelete={async () => {
+          if (selectedRoutineOption) await deleteRoutine(selectedRoutineOption);
+          const result = await getRoutines();
+          setRoutines(result);
+        }}
+      />
     </ThemedView>
   );
 }
