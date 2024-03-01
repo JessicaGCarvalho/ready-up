@@ -3,7 +3,7 @@ import { styles } from "./styles";
 import { ThemedText, ThemedView, ThemedButton } from "@/components/Themed";
 import Colors from "@/constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
-import { ScrollView, useColorScheme } from "react-native";
+import { ScrollView, TextInput, View, useColorScheme } from "react-native";
 import { useEffect, useState } from "react";
 import {
   createRoutine,
@@ -12,17 +12,17 @@ import {
   getTasksForRoutine,
 } from "@/database/routines";
 import { Routine as RoutineType } from "@/constants/types";
-import { simpleQuery } from "@/database/helpers";
 import { RoutineModal } from "@/components/RoutineModal";
 
 export default function TabTwoScreen() {
   const colorScheme = useColorScheme();
-
   const [routines, setRoutines] = useState<RoutineType[]>([]);
   const [isRoutineModalVisible, setIsRoutineModalVisible] = useState(false);
   const [selectedRoutineOption, setSelectedRoutineOption] = useState<number>();
+  const [currentSearch, setCurrentSearch] = useState("");
 
   useEffect(() => {
+    //createRoutine("C");
     getRoutines().then(setRoutines);
   }, []);
 
@@ -38,17 +38,45 @@ export default function TabTwoScreen() {
       </ThemedButton>
       <ThemedText style={styles.title}>Routines</ThemedText>
       <ScrollView contentContainerStyle={styles.routinesContainer}>
-        {routines.map((routine) => {
-          return (
-            <Routine
-              routine={routine}
-              handleOptionsClicked={() => {
-                setIsRoutineModalVisible(true);
-                setSelectedRoutineOption(routine.id);
-              }}
-            />
-          );
-        })}
+        <View
+          style={[
+            {
+              backgroundColor:
+                Colors[colorScheme ?? "light"].secondaryBackground,
+            },
+            styles.searchBar,
+          ]}
+        >
+          <AntDesign
+            name="search1"
+            size={20}
+            color={Colors[colorScheme ?? "light"].accent}
+          />
+          <TextInput
+            placeholder={"Search Routines"}
+            placeholderTextColor={Colors[colorScheme ?? "light"].secondaryText}
+            style={[
+              styles.text,
+              { color: Colors[colorScheme ?? "light"].text, width: "100%" },
+            ]}
+            onChangeText={setCurrentSearch}
+          />
+        </View>
+        {routines
+          .filter((routine) =>
+            routine.name.toLowerCase().includes(currentSearch.toLowerCase())
+          )
+          .map((routine) => {
+            return (
+              <Routine
+                routine={routine}
+                handleOptionsClicked={() => {
+                  setIsRoutineModalVisible(true);
+                  setSelectedRoutineOption(routine.id);
+                }}
+              />
+            );
+          })}
       </ScrollView>
       <RoutineModal
         isVisible={isRoutineModalVisible}

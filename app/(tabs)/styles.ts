@@ -32,4 +32,12 @@ export const styles = StyleSheet.create({
     display: "flex",
     gap: 16,
   },
+  searchBar: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    padding: 8,
+    borderRadius: 4,
+  },
 });

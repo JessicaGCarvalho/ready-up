@@ -4,13 +4,17 @@ export default {
     secondaryText: "#666666",
     background: "#ffffff",
     secondaryBackground: "#f5f5f5",
+    highlightBackground: "#7F7F7F",
     accent: "#007bff",
+    red: "#FF4D4D",
   },
   dark: {
     text: "#ffffff",
     secondaryText: "#999999",
     background: "#0a0a0a",
     secondaryBackground: "#222222",
+    highlightBackground: "#555555",
     accent: "#318CE7",
+    red: "#FF4D4D",
   },
 };
