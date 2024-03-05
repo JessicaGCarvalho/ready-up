@@ -20,13 +20,33 @@ export function RoutineModal(props: {
     props.setIsRoutineModalVisible(false);
   };
   return (
+    // <Modal
+    //   transparent
+    //   visible={props.isVisible}
+    //   onDismiss={handleClose}
+    //   animationType="none"
+    // >
+    //   <Pressable
+    //     style={[
+    //       { backgroundColor: Colors[colorScheme ?? "light"].modalBackground },
+    //       styles.background,
+    //     ]}
+    //     onPress={handleClose}
+    //   ></Pressable>
     <Modal
-      animationType="fade"
       transparent
       visible={props.isVisible}
       onDismiss={handleClose}
+      animationType="fade"
     >
-      <Pressable style={styles.background} onPress={handleClose}>
+      <Pressable
+        style={[
+          { backgroundColor: Colors[colorScheme ?? "light"].modalBackground },
+          styles.background,
+        ]}
+        //style={styles.background}
+        onPress={handleClose}
+      >
         <View style={styles.container}>
           <TouchableHighlight
             onPress={() => {}}
@@ -100,12 +120,12 @@ export function RoutineModal(props: {
         </View>
       </Pressable>
     </Modal>
+    // </Modal>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "rgba(10, 10, 10, 0.5)",
     height: "100%",
   },
   container: {

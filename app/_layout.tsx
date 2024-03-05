@@ -63,6 +63,9 @@ function RootLayoutNav() {
             headerShown: false,
           }}
         />
+        <Stack.Screen name="createRoutine" />
+        <Stack.Screen name="addTask" />
+        <Stack.Screen name="createTask" />
       </Stack>
     </ThemeProvider>
   );

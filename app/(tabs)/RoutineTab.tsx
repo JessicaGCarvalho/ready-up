@@ -13,8 +13,10 @@ import {
 } from "@/database/routines";
 import { Routine as RoutineType } from "@/constants/types";
 import { RoutineModal } from "@/components/RoutineModal";
+import { router } from "expo-router";
+import { SearchBar } from "@/components/SearchBar";
 
-export default function TabTwoScreen() {
+export default function RoutineScreen() {
   const colorScheme = useColorScheme();
   const [routines, setRoutines] = useState<RoutineType[]>([]);
   const [isRoutineModalVisible, setIsRoutineModalVisible] = useState(false);
@@ -22,13 +24,18 @@ export default function TabTwoScreen() {
   const [currentSearch, setCurrentSearch] = useState("");
 
   useEffect(() => {
-    //createRoutine("C");
+    // createRoutine("d");
     getRoutines().then(setRoutines);
   }, []);
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedButton style={styles.createRoutineButton}>
+      <ThemedButton
+        style={styles.createRoutineButton}
+        onPress={() => {
+          router.push("/createRoutine");
+        }}
+      >
         <AntDesign
           name="plus"
           size={20}
@@ -38,30 +45,10 @@ export default function TabTwoScreen() {
       </ThemedButton>
       <ThemedText style={styles.title}>Routines</ThemedText>
       <ScrollView contentContainerStyle={styles.routinesContainer}>
-        <View
-          style={[
-            {
-              backgroundColor:
-                Colors[colorScheme ?? "light"].secondaryBackground,
-            },
-            styles.searchBar,
-          ]}
-        >
-          <AntDesign
-            name="search1"
-            size={20}
-            color={Colors[colorScheme ?? "light"].accent}
-          />
-          <TextInput
-            placeholder={"Search Routines"}
-            placeholderTextColor={Colors[colorScheme ?? "light"].secondaryText}
-            style={[
-              styles.text,
-              { color: Colors[colorScheme ?? "light"].text, width: "100%" },
-            ]}
-            onChangeText={setCurrentSearch}
-          />
-        </View>
+        <SearchBar
+          setCurrentSearch={setCurrentSearch}
+          placeHolder="Search Routines"
+        />
         {routines
           .filter((routine) =>
             routine.name.toLowerCase().includes(currentSearch.toLowerCase())

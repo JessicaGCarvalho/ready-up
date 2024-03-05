@@ -1,5 +1,5 @@
 import { TouchableOpacity, View, useColorScheme } from "react-native";
-import { ThemedAccentButton, ThemedText } from "./Themed";
+import { ThemedAccentButton, ThemedText, ThemedView } from "./Themed";
 import { AntDesign } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { StyleSheet } from "react-native";
@@ -19,7 +19,7 @@ export function Routine(props: {
   }, []);
 
   return (
-    <View
+    <ThemedView
       style={[
         {
           backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,
@@ -57,7 +57,7 @@ export function Routine(props: {
       <ThemedAccentButton>
         <ThemedText style={styles.text}>Add to Schedule</ThemedText>
       </ThemedAccentButton>
-    </View>
+    </ThemedView>
   );
 }
 

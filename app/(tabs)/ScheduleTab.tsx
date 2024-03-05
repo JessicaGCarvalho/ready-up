@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useColorScheme } from "react-native";
 import Colors from "@/constants/Colors";
 
-export default function TabOneScreen() {
+export default function ScheduleScreen() {
   const colorScheme = useColorScheme();
 
   return (
