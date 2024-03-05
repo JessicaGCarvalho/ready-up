@@ -56,6 +56,7 @@ export default function RoutineScreen() {
           .map((routine) => {
             return (
               <Routine
+                key={routine.id}
                 routine={routine}
                 handleOptionsClicked={() => {
                   setIsRoutineModalVisible(true);
