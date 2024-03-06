@@ -6,7 +6,7 @@ import {
   useColorScheme,
   Pressable,
 } from "react-native";
-import { ThemedText } from "./Themed";
+import { ThemedText, ThemedView } from "./Themed";
 import Colors from "@/constants/Colors";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { SwipeableModal } from "./SwipeableModal";
@@ -26,78 +26,70 @@ export function RoutineModal(props: {
       transparent
       isOpen={props.isVisible}
       onDismiss={handleClose}
+      style={styles.container}
     >
-      <SwipeableModal.Foreground style={styles.container}>
-        <TouchableHighlight
-          onPress={() => {}}
-          style={[
-            {
-              backgroundColor:
-                Colors[colorScheme ?? "light"].secondaryBackground,
-            },
-            styles.modalButton,
-            styles.topModalButton,
-          ]}
-          underlayColor={Colors[colorScheme ?? "light"].highlightBackground}
-        >
-          <View style={styles.modalButtonContainer}>
-            <MaterialIcons
-              name="edit"
-              size={24}
-              color={Colors[colorScheme ?? "light"].text}
-            />
-            <ThemedText style={styles.text}>Edit Routine</ThemedText>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => {
-            props.handleDelete();
-            handleClose();
-          }}
-          style={[
-            {
-              backgroundColor:
-                Colors[colorScheme ?? "light"].secondaryBackground,
-              borderTopColor:
-                Colors[colorScheme ?? "light"].highlightBackground,
-              borderTopWidth: 1,
-            },
-            styles.modalButton,
-            styles.deleteModalButton,
-          ]}
-          underlayColor={Colors[colorScheme ?? "light"].highlightBackground}
-        >
-          <View style={styles.modalButtonContainer}>
-            <Feather
-              name="x"
-              size={28}
-              color={Colors[colorScheme ?? "light"].red}
-            />
-            <ThemedText
-              style={[
-                { color: Colors[colorScheme ?? "light"].red },
-                styles.text,
-              ]}
-            >
-              Delete Routine
-            </ThemedText>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={handleClose}
-          style={[
-            {
-              backgroundColor:
-                Colors[colorScheme ?? "light"].secondaryBackground,
-            },
-            styles.modalButton,
-            styles.cancelModalButton,
-          ]}
-          underlayColor={Colors[colorScheme ?? "light"].highlightBackground}
-        >
-          <ThemedText style={styles.text}>Cancel</ThemedText>
-        </TouchableHighlight>
-      </SwipeableModal.Foreground>
+      <TouchableHighlight
+        onPress={() => {}}
+        style={[
+          {
+            backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,
+          },
+          styles.modalButton,
+          styles.topModalButton,
+        ]}
+        underlayColor={Colors[colorScheme ?? "light"].highlightBackground}
+      >
+        <View style={styles.modalButtonContainer}>
+          <MaterialIcons
+            name="edit"
+            size={24}
+            color={Colors[colorScheme ?? "light"].text}
+          />
+          <ThemedText style={styles.text}>Edit Routine</ThemedText>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        onPress={() => {
+          props.handleDelete();
+          handleClose();
+        }}
+        style={[
+          {
+            backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,
+            borderTopColor: Colors[colorScheme ?? "light"].highlightBackground,
+            borderTopWidth: 1,
+          },
+          styles.modalButton,
+          styles.deleteModalButton,
+        ]}
+        underlayColor={Colors[colorScheme ?? "light"].highlightBackground}
+      >
+        <View style={styles.modalButtonContainer}>
+          <Feather
+            name="x"
+            size={28}
+            color={Colors[colorScheme ?? "light"].red}
+          />
+          <ThemedText
+            style={[{ color: Colors[colorScheme ?? "light"].red }, styles.text]}
+          >
+            Delete Routine
+          </ThemedText>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight
+        onPress={handleClose}
+        style={[
+          {
+            backgroundColor: Colors[colorScheme ?? "light"].secondaryBackground,
+          },
+          styles.modalButton,
+          styles.cancelModalButton,
+        ]}
+        underlayColor={Colors[colorScheme ?? "light"].highlightBackground}
+      >
+        <ThemedText style={styles.text}>Cancel</ThemedText>
+      </TouchableHighlight>
     </SwipeableModal>
   );
 }
@@ -107,12 +99,8 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   container: {
-    display: "flex",
     height: "25%",
     width: "100%",
-    position: "absolute",
-    alignItems: "center",
-    bottom: 0,
   },
   text: {
     fontSize: 16,
