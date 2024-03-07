@@ -22,6 +22,7 @@ export function RoutineModal(props: {
   };
   return (
     <SwipeableModal
+      animationHeight={200}
       animationType="fade"
       transparent
       isOpen={props.isVisible}
