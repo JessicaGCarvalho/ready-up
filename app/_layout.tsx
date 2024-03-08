@@ -67,9 +67,9 @@ function RootLayoutNav() {
                 headerShown: false,
               }}
             />
-            <Stack.Screen name="createRoutine" />
-            <Stack.Screen name="addTask" />
-            <Stack.Screen name="createTask" />
+            <Stack.Screen name="(actions)/createRoutine/index" />
+            <Stack.Screen name="(actions)/addTask/index" />
+            <Stack.Screen name="(actions)/createTask/index" />
           </Stack>
         </View>
       </GestureHandlerRootView>
