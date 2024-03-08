@@ -1,6 +1,5 @@
 import { ThemedAccentButton, ThemedText } from "@/components/Themed";
 import Colors from "@/constants/Colors";
-import { router } from "expo-router";
 import { TextInput, View, useColorScheme, StyleSheet } from "react-native";
 
 export default function CreateTaskLayout() {

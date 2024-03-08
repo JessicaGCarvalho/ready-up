@@ -11,6 +11,8 @@ import { useEffect } from "react";
 
 import { useColorScheme } from "@/components/useColorScheme";
 import { setupDb } from "@/database/helpers";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { View } from "react-native";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -56,17 +58,21 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen name="createRoutine" />
-        <Stack.Screen name="addTask" />
-        <Stack.Screen name="createTask" />
-      </Stack>
+      <GestureHandlerRootView>
+        <View style={{ height: "100%", width: "100%" }}>
+          <Stack>
+            <Stack.Screen
+              name="(tabs)"
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen name="(actions)/createRoutine/index" />
+            <Stack.Screen name="(actions)/addTask/index" />
+            <Stack.Screen name="(actions)/createTask/index" />
+          </Stack>
+        </View>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

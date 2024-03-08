@@ -33,7 +33,7 @@ export default function RoutineScreen() {
       <ThemedButton
         style={styles.createRoutineButton}
         onPress={() => {
-          router.push("/createRoutine");
+          router.push("/createRoutine/");
         }}
       >
         <AntDesign
@@ -56,6 +56,7 @@ export default function RoutineScreen() {
           .map((routine) => {
             return (
               <Routine
+                key={routine.id}
                 routine={routine}
                 handleOptionsClicked={() => {
                   setIsRoutineModalVisible(true);
