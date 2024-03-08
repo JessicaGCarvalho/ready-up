@@ -33,7 +33,7 @@ export default function RoutineScreen() {
       <ThemedButton
         style={styles.createRoutineButton}
         onPress={() => {
-          router.push("/createRoutine");
+          router.push("/createRoutine/");
         }}
       >
         <AntDesign

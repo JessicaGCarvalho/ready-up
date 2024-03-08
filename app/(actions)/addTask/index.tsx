@@ -2,7 +2,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { Task } from "@/components/Task";
 import { ThemedView } from "@/components/Themed";
 import { Task as TaskType } from "@/constants/types";
-import { createTask, getTasks } from "@/database/tasks";
+import { getTasks } from "@/database/tasks";
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 
